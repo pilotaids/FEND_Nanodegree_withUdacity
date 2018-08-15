@@ -1,0 +1,13 @@
+{
+	"id": "chicken-pomegranate-salad",
+    "name": "Chicken Pomegranate Salad",
+    "img": "chicken-pomegranate-salad.png",
+    "calories": 430,
+    "rating": 4.1,
+    "description": "A simple, sweet and delicious salad of chicken, pomegranate, spinach, and spieced candied walnuts. Served with a side of citrus vinaigrette.",
+    "reviews": [
+    	"lots of good flavor, filling. Pomegranate were tasty and the overall salad was great. Would get it again!",
+    	"very good. Lots of lettuce",
+    	"Not bad, not super filling"
+    ]
+}

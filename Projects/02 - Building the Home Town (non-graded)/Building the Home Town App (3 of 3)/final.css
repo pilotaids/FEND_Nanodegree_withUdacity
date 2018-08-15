@@ -1,0 +1,115 @@
+/* Final CSS */
+
+/* Reset all font sizes & line heights to the suggested minimum */
+body {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+
+/* Reset the css of the recent/top news articles' snippets and their pictures to use 'flex' */
+.snippet__thumbnail > img {
+  width: 100%;
+}
+
+.snippet {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.snippet__title {
+  order: 0;
+  width: 100%;
+  margin: 0 0 0.5em;
+}
+
+.snippet__thumbnail {
+  order: 1;
+  width: 30%;
+}
+
+.snippet__description {
+  order: 2;
+  width: 70%;
+  margin: 0;
+  padding: 0 0 0 1em;
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+}
+
+
+/* Hide the recent/top news snippets' pictures as the window decreases in size */
+@media screen and (max-width: 450px) {
+  .snippet__thumbnail {
+    display: none;
+  }
+  .snippet__description {
+    width: 100%;
+    padding: 0;
+  }
+}
+
+
+/* Hide scores' score-table column(s) as the window decreases in size */
+@media screen and (max-width: 390px) {
+  .scores__table th:nth-child(1),
+  .scores__table td:nth-child(1) {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 470px) {
+  .scores__table .scores__location {
+    display: none;
+  }
+}
+
+
+/* Make the recent/top news articles' snippets and their pictures responsive */
+@media screen and (max-width: 649px) {
+  .snippet__thumbnail {
+    width: 30%;
+    margin: 0;
+  }
+  .snippet__description {
+    -webkit-line-clamp: 3;
+    max-height: 3.7em;
+  }
+}
+
+@media screen and (min-width: 650px) {  
+  .snippet__title {
+  }
+  .snippet__thumbnail {
+    width: 30%;
+    height: 150px;
+    margin-right: 0;
+  }
+  .snippet__description {
+    -webkit-line-clamp: 4;
+    max-height: 4.9em
+  }
+}
+
+
+/* Adjust score-table's font sizes */
+@media screen and (min-width: 699px) {
+  .scores__table {
+    font-size: 12px;
+  }
+}
+
+
+/* Adjust hero's background picture size so that it doesn't get cut too much as the window size changes */
+@media screen and (min-width: 470px) and (max-width: 610px){
+  .hero {
+    background-size: cover;
+  }
+}
+@media screen and (min-width: 765px){
+  .hero {
+    background-size: cover;
+  }
+}

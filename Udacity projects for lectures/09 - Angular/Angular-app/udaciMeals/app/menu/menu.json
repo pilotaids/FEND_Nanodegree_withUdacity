@@ -1,0 +1,23 @@
+[
+    {
+    	"id": "chicken-pomegranate-salad",
+	    "name": "Chicken Pomegranate Salad",
+	    "img": "chicken-pomegranate-salad.png",
+	    "calories": 4300,
+	    "rating": 4.1
+    },
+    {
+    	"id": "strawberry-pudding",
+	    "name": "Strawberry Pudding",
+	    "img": "strawberry-pudding.png",
+	    "calories": 280,
+	    "rating": 5
+    },
+    {
+    	"id": "ham-goat-cheese-croissant",
+	    "name": "Ham and Goat Cheese Croissant",
+	    "img": "ham-goat-cheese-croissant.png",
+	    "calories": 670,
+	    "rating": 3.9
+    }
+]

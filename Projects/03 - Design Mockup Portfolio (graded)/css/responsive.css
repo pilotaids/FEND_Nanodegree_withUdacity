@@ -1,0 +1,229 @@
+/* Responsive CSS */
+
+/* Make the Featured-Work Section flex to adjust with screen size */
+.featured-work {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.header-menu {
+  display: none;
+}
+
+/* Give an initial order to all elements to avoid assigning one later */
+.robotic,
+.mountains,
+.sunflower {
+  order: 10;
+  width: inherit;
+}
+
+/* Adjust header when screen size goes below 320px */
+@media screen and (max-width: 320px) {
+  .header {
+    border-bottom: 3px solid #7d97ad;
+  }
+
+  .header-inner {
+    border-bottom: none;
+  }
+
+  .header-title {
+    display: none;
+  }
+
+  .header-menu {
+    position: relative;
+    padding-top: 12px;
+    padding-left: 1em;
+  }
+}
+
+/* Adjust header when screen size goes above 320px */
+@media screen and (min-width: 321px) {
+  .header-menu {
+    right: 0;
+    padding: 1em;
+  }
+
+  .header-title {
+    position: relative;
+  }
+}
+
+/* Adjust header logo and title for screen sizes below 410px */
+@media screen and (max-width: 410px) {
+  .header-logo {
+    display: none;
+  }
+
+  .header-title {
+    margin-left: 12px;
+  }
+}
+
+/* Adjust paragraphs below the pictures when screen size is below 440px */
+@media screen and (max-width: 440px) {
+  .img-title,
+  .inner-paragraph {
+    -webkit-line-clamp: 1;
+    max-height: 3.7em;
+  }
+}
+
+/* Adjust the main section and the nav-bar when screen size is between 400 and 600px */
+@media screen and (min-width: 400px) and (max-width: 600px) {
+  .content {
+    width: 400px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .nav {
+    width: 200px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+}
+
+/* Adjust page elements to a mobile-view-setup when screen size is below 600px */
+@media screen and (max-width: 600px) {
+  .header-menu {
+    display: inline-block;
+    position: absolute;
+  }
+
+  .header-menu svg {
+    width: 32px;
+  }
+
+  .nav {
+    z-index: 10;
+    background-color: #fff;
+    position: absolute;
+    /* This trasform moves the drawer off canvas. */
+    -webkit-transform: translate(-600px, 0);
+    transform: translate(-600px, 0);
+    /* Optionally, we animate the drawer. */
+    transition: transform 0.3s ease;
+  }
+
+  .nav.open {
+    -webkit-transform: translate(0, 0);
+    transform: translate(0, 0);
+  }
+
+  .nav-item {
+    display: list-item;
+    width: 100%;
+    text-align: left;
+    padding: 24px 0px;
+  }
+
+  .inner-robotic,
+  .inner-mountains,
+  .inner-sunflower {
+    width: inherit;
+    height: auto;
+  }
+
+  .inner-robotic img,
+  .inner-mountains img,
+  .inner-sunflower img {
+    height: inherit;
+  }
+
+  .inner-paragraph {
+    padding: 0;
+    margin: 0;
+  }
+
+  footer {
+    padding: 0.2em;
+  }
+
+  footer li {
+    display: block;
+    text-align: left;
+    padding: 0.5em;
+    border-bottom: 1px solid #7d97ad;
+    margin: 0;
+    width: 100%;
+  }
+}
+
+/* Adjust page elements to a tablete-view-setup when screen size is above 600px, but below 700px */
+@media screen and (min-width: 601px) {
+  .header-title {
+    position: absolute;
+    right: 0px;
+    text-align: right;
+  }
+  
+  .nav-item {
+    padding-bottom: 0;
+    line-height: 24px;
+    border: none;
+  }
+
+  .nav-item a {
+    padding: 0;
+  }
+
+  .robotic {
+    order: 0;
+    width: 50%;
+  }
+
+  .sunflower {
+    order: 1;
+    width: 50%;
+  }
+
+  footer {
+    border-top: 1px solid #7d97ad;
+    padding: 1em;
+  }
+
+  footer li {
+    display: inline-block;
+    text-align: center;
+    border-bottom: none;
+    width: 28%;
+  }
+}
+
+/* Adjust page sections order when screen size is above 700px */
+@media screen and (min-width: 700px) {
+  .robotic {
+    width: 27%;
+  }
+
+  .mountains {
+    order: 1;
+    width: 27%;
+  }
+
+  .sunflower {
+    order: 2;
+    width: 27%;
+  }
+}
+
+/* Adjust page elements to a full-view-setup when screen size is above 850px */
+@media screen and (min-width: 850px) {
+  main,
+  .header-inner,
+  .nav,
+  .content,
+  footer {
+    width: 850px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .header-title {
+    position: relative;
+    width: 730px;
+  }
+}

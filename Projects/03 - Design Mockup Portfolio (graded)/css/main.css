@@ -1,0 +1,246 @@
+/* Main CSS */
+* {
+  box-sizing: border-box;
+}
+
+body,
+html,
+footer {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* Set all font sizes & line heights to the suggested minimum */
+body {
+  font-size: 16px;
+  line-height: 1.2em;
+}
+
+main {
+  width: 100%;
+  margin-left: auto;
+  margin-right: 1em;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+
+
+/*
+ *
+ * Header
+ *
+ */
+
+.header {
+  min-height: 56px;
+  transition: min-height 0.3s;
+}
+
+.header-inner {
+  border-bottom: 5px solid #7d97ad;
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.header-title {
+  display: inline-block;
+  margin-right: 1em;
+  text-transform: uppercase;
+}
+
+.header-title h1 {
+  font-size: 35px;
+  padding-bottom: 0;
+  margin-bottom: 0;
+}
+
+.header-title p {
+  font-size: 16px;
+}
+
+.header-logo {
+  height: 72px;
+  margin: 12px;
+  vertical-align: top;
+}
+
+
+
+/*
+ *
+ * Top Level Navigation
+ *
+ */
+
+.nav {
+  width: 100%;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.nav-list {
+  width: 100%;
+  padding: 0;
+  margin: 0;
+}
+
+.nav-item {
+  display: inline-block;
+  width: 24%;
+  text-align: center;
+  padding: 24px 8px;
+  text-transform: uppercase;
+}
+
+.nav a {
+  text-decoration: none;
+  color: #2d3c49;
+  padding: 1.5em;
+}
+
+.nav a:hover {
+  text-decoration: underline;
+  color: #02b3e4;
+}
+
+
+
+/*
+ *
+ * Portfolio Intro
+ *
+ */
+
+.portfolio-intro {
+  width: 100%;
+  padding: 1em;
+}
+
+.portfolio-intro img {
+  width: inherit;
+  height: inherit;
+}
+
+
+
+/*
+ *
+ * Featured work
+ *
+ */
+
+.featured-work {
+  width: 100%;
+  text-align: center;
+  overflow: hidden;
+}
+
+.featured-work img {
+  height: 200px;
+  width: 100%;
+  max-width: 400px;
+  max-height: 300px;
+}
+
+.featured-work-title {
+  color: #2d3c49;
+  padding-left: 16px;
+  font-size: 30px;
+}
+
+.robotic,
+.mountains,
+.sunflower {
+  flex-grow: 1;
+}
+
+.inner-robotic,
+.inner-mountains,
+.inner-sunflower {
+  padding: 1em;
+}
+
+.img-title {
+  width: inherit;
+  margin: 0;
+  padding: 10px 0;
+  text-transform: uppercase;
+}
+
+.featured-work a,
+.img-title {
+  text-decoration: none;
+  color: #2d3c49;
+}
+
+.img-title:hover {
+  text-decoration: underline;
+  color: #02b3e4;
+}
+
+.img-title,
+.inner-paragraph {
+  overflow: hidden;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  text-overflow: ellipsis;
+  -webkit-line-clamp: 3;
+  max-height: 4.5em;
+}
+
+.inner-paragraph {
+  width: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+
+
+/*
+ *
+ * Footer
+ *
+ */
+
+footer {
+  display: flex;
+  flex-wrap: wrap;
+  padding: 1em;
+  width: 100%;
+  background-color: #b6b8ba;
+}
+
+footer ul,
+footer li {
+  margin: 0 0.5em;
+  width: 100%;
+}
+
+footer a {
+  text-decoration: none;
+  color: black;
+  padding: 0.2em;
+}
+
+.footer-contact {
+  order: 0;
+  width: 30%;
+}
+
+.footer-twitter {
+  order: 1;
+  width: 30%;
+}
+
+.footer-linkedin {
+  order: 2;
+  width: 30%;
+}

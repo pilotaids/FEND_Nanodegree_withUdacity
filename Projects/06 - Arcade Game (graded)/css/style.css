@@ -1,0 +1,43 @@
+/*
+ * HMTL elements
+ */
+body {
+    text-align: center;
+}
+
+canvas {
+    margin-top: -30px;
+}
+
+
+
+/*
+ * Header
+ */
+.header-title {
+ 	margin: 0 auto;
+	text-align: center;
+}
+
+.header-title h1 {
+	display: inline-block;
+	position: relative;
+	font-size: 16px;
+    text-align: left;
+	text-transform: uppercase;
+}
+
+.header-title h2 {
+	display: inline-block;
+	position: relative;
+	font-size: 16px;
+    text-align: right;
+	text-transform: uppercase;
+}
+
+.header-title span {
+	display: inline-block;
+	position: relative;
+	font-size: 12px;
+	margin: 0 10px;
+}

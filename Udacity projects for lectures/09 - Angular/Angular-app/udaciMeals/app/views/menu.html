@@ -1,0 +1,26 @@
+<!-- The instance of the menu controller is passed by the controller, and the name of the instance is set in the html file in the 'ng-controller' after the 'as' word (in this case the instance is called 'menu'):
+    <div class="container">
+        <div ng-include="'views/menu.html'" ng-controller="MenuCtrl as menu"></div>
+    </div>
+ -->
+<div class="row">
+	<div class="items-container" ng-repeat="item in menu.items">
+		<div class="col-md-4">
+			<img class="item__image" ng-src="images/{{item.img}}" alt="{{item.name}}">
+			<h4> <a ui-sref="item({id: item.id})">{{item.name}}</a></h4>
+			<p>
+				Rating: {{item.rating}} <span ng-if="item.rating > 4" ng-class="{'highlight': item.rating > 5}"></span>....
+				<button ng-click="menu.increment(item)">+</button>
+				<button ng-click="menu.decrement(item)">-</button>
+			</p>
+			<div class="well">
+				<select ng-model="item.meal" name="">
+					<option value="breakfast">Breakfast</option>
+					<option value="lunch">Lunch</option>
+					<option value="dinner">Dinner</option>
+				</select>
+				<button ng-click="menu.chooseItem(item.meal, item.name)">Select Item</button>
+			</div>
+		</div>
+	</div>
+</div>

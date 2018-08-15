@@ -1,0 +1,33 @@
+<!-- The instance of the menu controller is passed by the controller, and the name of the instance is set in the html file in the 'ng-controller' after the 'as' word (in this case the instance is called 'menu'):
+    <div class="container">
+        <div ng-include="'views/menu.html'" ng-controller="MenuCtrl as menu"></div>
+    </div>
+ -->
+<div class="row">
+	<div class="col-md-2" ng-repeat="(day, menuCategory) in order.list" ng-click="order.setActiveDay(day)">
+		{{day}}
+		<dl>
+			<dt>Breakfast</dt>
+			<dd>
+				<script>
+					console.log("menuCategory.breakfast"+menuCategory.breakfast);
+				</script>
+				{{menuCategory.breakfast}}
+			</dd>
+			<dt>Lunch</dt>
+			<dd>
+				<script>
+					console.log("menuCategory.lunch"+menuCategory.lunch);
+				</script>
+				{{menuCategory.lunch}}
+			</dd>
+			<dt>Dinner</dt>
+			<dd>
+				<script>
+					console.log("menuCategory.dinner"+menuCategory.dinner);
+				</script>
+				{{menuCategory.dinner}}
+			</dd>
+		</dl>
+	</div>
+</div>

@@ -1,0 +1,17 @@
+<h3>{{item.data.name}}</h3>
+
+<img class="item__image" ng-src="images/{{item.data.img}}" alt="{{item.data.name}}">
+
+<dl>
+	<dt>Rating</dt>
+	<dd>{{item.data.rating}}</dd>
+	<dt>Description</dt>
+	<dd>{{item.data.description}}</dd>
+</dl>
+
+<!-- Create a link for each view -->
+<p><a ui-sref="item.nutrition">Nutrition</a><a ui-sref="item.reviews">Reviews</a></p>
+
+<!-- The ui-view directory tells the router where to place the data.
+    In this case, the ratings/nutrition facts -->
+<div ui-view></div>

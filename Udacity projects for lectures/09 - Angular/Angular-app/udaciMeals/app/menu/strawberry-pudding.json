@@ -1,0 +1,13 @@
+{
+	"id": "strawberry-pudding",
+    "name": "Strawberry Pudding",
+    "img": "strawberry-pudding.png",
+    "calories": 280,
+    "rating": 5,
+    "description": "A sweet and tasty pudding filled with strawberries, blueberries, and raspberries.",
+    "reviews": [
+    	"lots of good flavor, but perhaps a bit too sweet. Would get it again!",
+    	"very good. Lots of strawberries",
+    	"One of the best pudding's I've ever eaten!"
+    ]
+}
