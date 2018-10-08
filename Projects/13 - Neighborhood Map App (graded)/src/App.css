@@ -1,0 +1,131 @@
+body {
+  overflow: hidden;
+}
+
+
+/*
+ * App
+ */
+.infoWindow{
+  width: 200px;
+  border-radius: 10px;
+}
+
+#container {
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#map-container {
+  position: absolute;
+  right: 0;
+  width: 100%;
+  height: calc(100vh - 60px);
+}
+
+#map {
+  right: 0;
+  height: 100%;
+}
+
+
+/*
+ * NavBar
+ */
+.nav-item {
+  margin: 0px;
+  padding: 0px 15px;
+  vertical-align: middle;
+  line-height: 60px;
+  word-spacing: 1.5px;
+  letter-spacing: 1.5px;
+  color: white;
+  cursor: pointer;
+}
+
+.transition {
+  -webkit-transition: transition 0.3s;
+  -o-transition: transition 0.3s;
+  -webkit-transition: 0.3s;
+  -o-transition: 0.3s;
+  transition: 0.3s;
+}
+
+#navbar {
+  position: relative;z-index: 100;
+  background: black;
+  text-transform: uppercase;
+  -webkit-box-shadow: 0px 1px 1px grey;
+  box-shadow: 0px 1px 1px grey;
+}
+
+#sidebar-toggle-button {
+  float: right;
+  text-align: center;
+}
+
+#head-title {
+  display: inline-block;
+}
+
+@media (max-width: 310px) {
+  #head-title {
+    display: none;
+  }
+
+  #sidebar-toggle-button {
+    float: none;
+  }
+}
+
+@media (max-width: 475px) {
+  .nav-item {
+    padding: 0px 10px;
+    font-size: 1rem;
+  }
+}
+
+
+/*
+ * SideBar
+ */
+input[type="text"]:focus{
+  outline: none;
+  box-shadow: 0px 0px 5px #313e41;
+  border:1px solid #c59466;
+  border-radius: 5px;
+}
+
+li{
+  padding-bottom: 10px;
+}
+
+.form-control{
+  width: 90%;
+  min-height: 28px;
+  margin: 10px 0;
+  font-size: 16px;
+  border: 1px solid #222a3e;
+  border-radius: 5px;
+}
+
+#sidebar {
+  position: absolute;
+  z-index: 100;
+  width: 250px;
+  max-width: 100%;
+  height: calc(100vh - 60px);
+  overflow-y: scroll;
+  padding: 10px;
+  background: #f2f2f2;
+  -webkit-box-shadow: 0px 1px 1px grey;
+  box-shadow: 0px 1px 1px grey;
+}
+
+@media screen and (max-width: 800px) {
+  ul{
+    font-size: 14px;
+  }
+}
