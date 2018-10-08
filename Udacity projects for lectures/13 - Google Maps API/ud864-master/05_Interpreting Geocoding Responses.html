@@ -1,0 +1,149 @@
+<!-- This is the corresponding "starter code" for 05_Interpreting Geocoding Responses in Udacity
+and Google's Maps API Course, Lesson 2 -->
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Geocoding service</title>
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta charset="utf-8">
+    <style>
+      html,
+      body {
+        height: 100%;
+        margin: 0;
+        padding: 0;
+      }
+      #map {
+        height: 100%;
+      }
+      #floating-panel {
+        position: absolute;
+        top: 10px;
+        left: 65%;
+        z-index: 5;
+        height:90%;
+        background-color: #fff;
+        padding: 5px;
+        border: 1px solid #999;
+        text-align: center;
+        font-family: 'Roboto','sans-serif';
+        line-height: 30px;
+        padding-left: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="floating-panel">
+      <input id="address" type="textbox" VALUE="Red Fort, Delhi">
+      <input id="submit" type="button" value="Geocode">
+      <div id="firstComponent">
+      </div>
+      <div id="secondComponent">
+      </div>
+    </div>
+    <div id="map"></div>
+    <script>
+      function initMap() {
+        var map = new google.maps.Map(document.getElementById('map'), {
+          zoom: 8,
+          center: {lat: -34.397, lng: 150.644}
+        });
+        var geocoder = new google.maps.Geocoder();
+        document.getElementById('submit').addEventListener('click', function() {
+          geocodeAddress(geocoder, map);
+        });
+      }
+
+      function geocodeAddress(geocoder, resultsMap) {
+        var address = document.getElementById('address').value;
+        geocoder.geocode({'address': address}, function(results, status) {
+          if (status === google.maps.GeocoderStatus.OK) {
+            resultsMap.setCenter(results[0].geometry.location);
+            // console.log("The Formatted Address is: "+results[0].results.formatted_address);
+            // console.log("The Location is ("+results[0].results.location.lat+","+results[0].results.location.long+"), with type of '"+results[0].results.location_type+"'.");
+            document.getElementById('firstComponent').innerHTML="The Formatted Address is: "+results[0].results.formatted_address;
+            document.getElementById('secondComponent').innerHTML="The Location is ("+results[0].results.location.lat+","+results[0].results.location.long+"), with type of '"+results[0].results.location_type+"'.";
+          } else {
+            alert('Geocode was not successful for the following reason: ' + status);
+          }
+        });
+      }
+    </script>
+    <script async defer
+     src="https://maps.googleapis.com/maps/api/js?v=3&key=AIzaSyCGZJyxS6h2DmSkN53GyMAroPVGou5B4nA&callback=initMap">
+    </script>
+  </body>
+</html>
+
+
+<!-- 
+Geocoding request example with lat long:  lng: }
+https://maps.googleapis.com/maps/api/geocode/json?latlng=-34.397,150.644&key=AIzaSyCGZJyxS6h2DmSkN53GyMAroPVGou5B4nA
+
+{
+   "results" : [
+      {
+         "address_components" : 
+         [
+            {
+               "long_name" : "1600",
+               "short_name" : "1600",
+               "types" : [ "street_number" ]
+            },
+            {
+               "long_name" : "Amphitheatre Pkwy",
+               "short_name" : "Amphitheatre Pkwy",
+               "types" : [ "route" ]
+            },
+            {
+               "long_name" : "Mountain View",
+               "short_name" : "Mountain View",
+               "types" : [ "locality", "political" ]
+            },
+            {
+               "long_name" : "Santa Clara County",
+               "short_name" : "Santa Clara County",
+               "types" : [ "administrative_area_level_2", "political" ]
+            },
+            {
+               "long_name" : "California",
+               "short_name" : "CA",
+               "types" : [ "administrative_area_level_1", "political" ]
+            },
+            {
+               "long_name" : "United States",
+               "short_name" : "US",
+               "types" : [ "country", "political" ]
+            },
+            {
+               "long_name" : "94043",
+               "short_name" : "94043",
+               "types" : [ "postal_code" ]
+            }
+         ],
+         "formatted_address" : "1600 Amphitheatre Parkway, Mountain View, CA 94043, USA",
+         "geometry" : {
+            "location" : {
+               "lat" : 37.4224764,
+               "lng" : -122.0842499
+            },
+            "location_type" : "ROOFTOP",
+            "viewport" : {
+               "northeast" : {
+                  "lat" : 37.4238253802915,
+                  "lng" : -122.0829009197085
+               },
+               "southwest" : {
+                  "lat" : 37.4211274197085,
+                  "lng" : -122.0855988802915
+               }
+            }
+         },
+         "place_id" : "ChIJ2eUgeAK6j4ARbn5u_wAGqWA",
+         "types" : [ "street_address" ]
+      }
+   ],
+   "status" : "OK"
+}
+
+-->

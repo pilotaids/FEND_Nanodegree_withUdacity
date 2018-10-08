@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-// import PropTypes from 'prop-types'
 
 class NavBar extends Component {
 
-  // To support accessibility (https://stackoverflow.com/questions/34223558/enter-key-event-handler-on-react-bootstrap-input-component?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+  // Accessibility support. For reference code go to the following link
+  // https://stackoverflow.com/questions/34223558/enter-key-event-handler-on-react-bootstrap-input-component?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
   menuKeyEnter(event) {
     var code = event.keyCode || event.which;
     if(code === 13) {

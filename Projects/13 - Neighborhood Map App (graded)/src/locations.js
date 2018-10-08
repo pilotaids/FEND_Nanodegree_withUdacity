@@ -1,3 +1,4 @@
+// App's default locations
 export const allLocation = [
   {
     location: {lat: 40.739605, lng: -74.008972},

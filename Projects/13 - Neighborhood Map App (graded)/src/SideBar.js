@@ -20,7 +20,8 @@ class SideBar extends Component {
     window.google.maps.event.trigger(selected[0], 'mouseout');
   }
 
-  // To support accessibility (https://stackoverflow.com/questions/34223558/enter-key-event-handler-on-react-bootstrap-input-component?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
+  // Accessibility support. For reference code go to the following link
+  // https://stackoverflow.com/questions/34223558/enter-key-event-handler-on-react-bootstrap-input-component?utm_medium=organic&utm_source=google_rich_qa&utm_campaign=google_rich_qa)
   handleKeyPress(target, item, e) {
     if(item.charCode === 13){
       this.listItem(target, e)

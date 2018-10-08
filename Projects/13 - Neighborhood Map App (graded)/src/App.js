@@ -17,9 +17,33 @@ class NeighborhoodMapApp extends Component {
     data:[],
     markers: [],
     infoWindows: [],
-    sidebarOpen: false,
+    sidebarOpen: true,
     toggleSideBar: this.toggleSideBar.bind(this),
     updateQuery: this.updateQuery.bind(this)
+  }
+
+  //Update the query when the user uses the filter field
+  updateQuery (query) {
+    if (query) {
+      let filteredMarkers;
+
+      // Filter the markers based on the value of the query
+      const match = new RegExp(escapeRegExp(query),'i');
+      filteredMarkers = this.state.markers.filter( (marker) => match.test(marker.title) );
+
+      // Populate the 'setMap' attribute for the marker based on value of the query
+      this.state.markers.forEach( (marker) => { marker.setMap(null) } );
+      filteredMarkers.forEach( (marker) => { marker.setMap(this.state.map) } );
+    } else {
+      this.state.markers.forEach( (marker) => { marker.setMap(this.state.map) } );
+    }
+
+    // Update the query
+    this.setState({ query });
+  }
+
+  updateData (data) {
+    this.setState({ data });
   }
 
   updateMarkers (markers) {
@@ -30,35 +54,12 @@ class NeighborhoodMapApp extends Component {
     this.setState({ infoWindows });
   }
 
-  //To update the query when the user use the filter field
-  updateQuery (query) {
-    if (query) {
-      let filteredMarkers;
-
-      // Filter the markers based on the value of the query
-      const match = new RegExp(escapeRegExp(query),'i');
-      filteredMarkers = this.state.markers.filter( (marker) => match.test(marker.title) );
-
-      // Set the Map for the marker based on value of the query
-      this.state.markers.forEach( (marker) => { marker.setMap(null) } );
-      filteredMarkers.forEach( (marker) => { marker.setMap(this.state.map) } );
-    } else {
-      this.state.markers.forEach( (marker) => { marker.setMap(this.state.map) } );
-    }
-
-    // Update the value of the query state
-    this.setState({ query });
-  }
-
-  //Update the data fater geeting the info from the API
-  updateData (data) {
-    this.setState({ data });
-  }
-
   toggleSideBar () {
     this.setState(state => ({ sidebarOpen: !state.sidebarOpen }));
   }
 
+  // Properly load the mad from the google API before loading any of the related components.
+  // For a reference, please following the link below:
   // https://stackoverflow.com/questions/48493960/using-google-map-in-react-component
   getGoogleMaps() {
     // If we haven't already defined the promise, define it
@@ -74,9 +75,7 @@ class NeighborhoodMapApp extends Component {
 
         // Load the Google Maps API
         const script = document.createElement("script");
-        
-            const API = 'AIzaSyB6N63ZIGH4b8Hgm9KhodA87Guuiem3C8Y';//AIzaSyCGZJyxS6h2DmSkN53GyMAroPVGou5B4nA&
-        
+        const API = 'AIzaSyB6N63ZIGH4b8Hgm9KhodA87Guuiem3C8Y';//AIzaSyCGZJyxS6h2DmSkN53GyMAroPVGou5B4nA&
         script.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=${API}&v=3&callback=resolveGoogleMapsPromise`;
         script.async = true;
         document.body.appendChild(script);
@@ -87,11 +86,12 @@ class NeighborhoodMapApp extends Component {
     return this.googleMapsPromise;
   }
 
+  // Function called to load the different API components ONLY AFTER the Map API is ready.
   loadMapComponents() {
-    // Filter the locations depending on the user input 
     const {map, query, locations, data} = this.state;
     let showingLocations = locations;
 
+    // Filter the locations based on the value entered in the search box
     if (query) {
       const match = new RegExp(escapeRegExp(query),'i');
       showingLocations = locations.filter( (location) => match.test(location.title) );
@@ -99,15 +99,18 @@ class NeighborhoodMapApp extends Component {
       showingLocations = locations;
     }
 
+    // Reset the 'setMap' attribute of all markers to 'null'
     this.state.markers.forEach( mark => { mark.setMap(null) } );
 
     // Clear the markers and the infoWindows arrays
     this.updateMarkers([]);
     this.updateInfoWindows([]);
     
+
+    // Create the markers, infoWindows, and the related eventListeners
     showingLocations.forEach( (marker, index) => {
 
-      // Filter the data that is stored form wikipedia in the state to add them to windows info
+      // Filter the marker's data received from wikipedia and use it for the related infoWindow
       let getData = data.filter( (markerInfo) => (marker.title === markerInfo[0][0]) )
                       .map( (markerDetail) => {
                         if (markerDetail[1] !== ''){
@@ -115,8 +118,9 @@ class NeighborhoodMapApp extends Component {
                           return markerDetail[1];
                         }
                         else
-                          return 'No Contents Have Been Found Try to Search Manual';
+                          return 'Sorry, We could not find any info related to this location.';
                       });
+
       let getLink = data.filter( (markerInfo) => (marker.title === markerInfo[0][0]) )
                       .map( (markerLink) => {
                         if (markerLink[1] !== ''){
@@ -133,9 +137,9 @@ class NeighborhoodMapApp extends Component {
                       <a href=${getLink}>More details</a>
                     </div>`;
 
-      // Add the content to infoWindows
+      // Add the content to infoWindow
       let addInfoWindow = new window.google.maps.InfoWindow({ content });
-      // Extend the map bound
+      // Extend bounds of the map based on the location's lat and long coordinates
       let bounds = new window.google.maps.LatLngBounds();
       
       // Default marker's style
@@ -146,7 +150,7 @@ class NeighborhoodMapApp extends Component {
         new window.google.maps.Point(10, 34),
         new window.google.maps.Size(21,34)
       );
-      // Mouse-Over highlighting marker's style
+      // Mouse-Over marker's style
       var highlightedIcon = new window.google.maps.MarkerImage(
         'http://chart.googleapis.com/chart?chst=d_map_spin&chld=1.15|0|FFFF24|40|_|%E2%80%A2',
         new window.google.maps.Size(21, 34),
@@ -166,7 +170,7 @@ class NeighborhoodMapApp extends Component {
         id: index
       });
 
-      //Add the marker to the list of marker
+      //Add the marker to the list of marker, and it's infoWindows to the infoWindows array
       this.state.markers.push(addmarker);
       this.state.infoWindows.push(addInfoWindow);
       
@@ -184,26 +188,29 @@ class NeighborhoodMapApp extends Component {
         //Close windows before open the another
         infoWindows.forEach( info => { info.close() } );
         addInfoWindow.open(map, addmarker);
-        
+
+        // Center the map on the clicked marker
         map.setCenter(addmarker.getPosition());
         map.setZoom(13);
 
-        //Clear he animaiton before add the new one
+        // Clear he animaiton before adding the new one
         if (addmarker.getAnimation() !== null) {
           addmarker.setAnimation(null);
         } else {
-          //Add the aniamtion when the marker is clicked
+          // Add the aniamtion when the marker is clicked
           addmarker.setAnimation(window.google.maps.Animation.BOUNCE);
           setTimeout( () => { addmarker.setAnimation(null); }, 400);
         }
       });
 
-      //Bounds
+      // Updated bounds
       this.state.markers.forEach( (marker) => bounds.extend(marker.position) );
       map.fitBounds(bounds);
     })
   }
 
+  // Properly load the mad from the google API before loading any of the related components.
+  // For a reference, please following the link below:
   // https://stackoverflow.com/questions/48493960/using-google-map-in-react-component
   componentWillMount() {
     // Start Google Maps API loading since we know we'll soon need it
@@ -215,7 +222,7 @@ class NeighborhoodMapApp extends Component {
     this.getGoogleMaps().then( () => {
       // Creating the Map
       const map = new window.google.maps.Map(document.getElementById('map'), {
-        // Giving an initial locaiton to start
+        // Giving an initial locaiton
         center: new window.google.maps.LatLng(40.7413549,-73.9980244),
         zoom: 13,
         styles: mapStyle,
@@ -233,7 +240,7 @@ class NeighborhoodMapApp extends Component {
       alert('Error loading page...');
     });
 
-    //By using wikpedia, I fetch the data about a specific location title 
+    // Fetch the necessary data from wikpedia based on the location's title 
     this.state.locations.map( (location, index) => {
       return fetchJsonp(`https://en.wikipedia.org/w/api.php?action=opensearch&search=${location.title}&format=json&callback=wikiCallback`)
         .then( response => response.json() ).then( (jsonData) => {

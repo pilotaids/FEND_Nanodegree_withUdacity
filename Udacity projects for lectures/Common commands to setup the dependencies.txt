@@ -1,0 +1,25 @@
+
+cd Dropbox/Udacity\ -\ Grow\ with\ Google\ Challenge\ Scholarships/Front-End\ Web\ Developer\ Nanodegree/Udacity\ projects\ for\ lectures/09\ -\ Angular/Angular-app/
+
+
+git clone https://github.com/....
+
+
+sudo npm install -g gulp bower
+
+
+npm install && bower install -f polymer-starter-kit
+
+
+
+
+
+Ember:
+
+npm install -g ember-cli
+
+$ ember -v
+version: 2.2.0-beta.6
+node: 4.2.1
+npm: 2.14.10
+os: darwin x64

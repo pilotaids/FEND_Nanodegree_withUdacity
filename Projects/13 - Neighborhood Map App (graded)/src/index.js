@@ -1,8 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './index.css';
 import NeighborhoodMapApp from './App';
 import registerServiceWorker from './registerServiceWorker';
+import './index.css';
 
-ReactDOM.render(<NeighborhoodMapApp />, document.getElementById('root'));
+ReactDOM.render(
+	<NeighborhoodMapApp />,
+	document.getElementById('root')
+);
+
 registerServiceWorker();

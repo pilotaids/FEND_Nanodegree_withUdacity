@@ -1,6 +1,6 @@
 {
-  "name": "udacity_fend_neighorhood_map_react",
-  "version": "0.1.0",
+  "name": "udacity_fend_neighorhood_map_app_react",
+  "version": "1.0.0",
   "private": true,
   "dependencies": {
     "escape-string-regexp": "^1.0.5",
