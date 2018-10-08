@@ -75,7 +75,7 @@ class NeighborhoodMapApp extends Component {
 
         // Load the Google Maps API
         const script = document.createElement("script");
-        const API = 'AIzaSyB6N63ZIGH4b8Hgm9KhodA87Guuiem3C8Y';//AIzaSyCGZJyxS6h2DmSkN53GyMAroPVGou5B4nA&
+        const API = '[ENTER KEY HERE]';
         script.src = `https://maps.googleapis.com/maps/api/js?libraries=places,geometry&key=${API}&v=3&callback=resolveGoogleMapsPromise`;
         script.async = true;
         document.body.appendChild(script);
